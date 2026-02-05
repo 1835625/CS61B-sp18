@@ -27,13 +27,6 @@ public class NBody {
         Planet[] planets = readPlanets(filename);
         StdDraw.enableDoubleBuffering();
         StdDraw.setScale(-radius, radius);
-        /**
-        StdDraw.clear();
-        StdDraw.picture(0, 0, "images/starfield.jpg");
-        for(Planet p : planets) {
-            p.draw();
-        }
-        StdDraw.show();*/
         double runTime = 0;
         while(runTime < T) {
             double[] xForces = new double[numPlanets];
