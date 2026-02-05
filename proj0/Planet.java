@@ -68,4 +68,11 @@ public class Planet {
         }
         return NetForceY;
     }
+
+    public void update(double exertTime, double forceX, double forceY) {
+        this.xxVel += exertTime * forceX / mass;
+        this.yyVel += exertTime * forceY / mass;
+        this.xxPos += exertTime * xxVel;
+        this.yyPos += exertTime * yyVel;
+    }
 }
