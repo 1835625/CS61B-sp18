@@ -48,3 +48,14 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Java build artifacts
+*.class
+
+# OS junk
+.DS_Store
+Thumbs.db
