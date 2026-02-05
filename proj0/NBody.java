@@ -1,6 +1,6 @@
 public class NBody {
-    public static int numPlanets;
-    public static double radius;
+    private static int numPlanets;
+    private static double radius;
 
     public static double readRadius(String s) {
         In in = new In(s);
@@ -14,7 +14,7 @@ public class NBody {
         radius = in.readDouble();
         Planet[] planets = new Planet[numPlanets];
         for(int i = 0; i < numPlanets; i += 1) {
-            planets[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), "images/" + in.readString());
+            planets[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readString());
         }
         return planets;
     }
