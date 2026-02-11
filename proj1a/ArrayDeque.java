@@ -101,7 +101,9 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        if (size == 0) return;
+        if (size == 0) {
+            return;
+        }
 //        int startP = getStartPos();
 //        int endP = getEndPos();
 //        if (startP > endP) {
@@ -188,7 +190,9 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size) return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
 //        int startP = getStartPos();
 //        int endP = getEndPos();
 //        if (startP > endP) {

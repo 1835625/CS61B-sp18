@@ -50,7 +50,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
 //        Node p = sentinel.next;
-//        while(p.next != sentinel) {
+//        while (p.next != sentinel) {
 //            System.out.print(p.item);
 //            System.out.print(" ");
 //            p = p.next;
@@ -92,7 +92,7 @@ public class LinkedListDeque<T> {
         }
         int currentIndex = 0;
         Node p = sentinel.next;
-        while(currentIndex < index) {
+        while (currentIndex < index) {
             currentIndex += 1;
             p = p.next;
         }
@@ -115,7 +115,7 @@ public class LinkedListDeque<T> {
         return getRecursive(index - 1, start.next);
     }
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         LinkedListDeque<Integer> L = new LinkedListDeque<Integer>(2);
         L.addFirst(1);
         L.addLast(3);
