@@ -1,9 +1,9 @@
 public class ArrayDeque<T> {
 
-    int size;
-    int nextFirst;
-    int nextLast;
-    T[] items;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
+    private T[] items;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -18,17 +18,21 @@ public class ArrayDeque<T> {
 
     private int getStartPos() {
         int startP;
-        if(nextFirst == items.length - 1) {
+        if (nextFirst == items.length - 1) {
             startP = 0;
-        } else startP = nextFirst + 1;
+        } else {
+            startP = nextFirst + 1;
+        }
         return startP;
     }
 
     private int getEndPos() {
         int endP;
-        if(nextLast == 0) {
+        if (nextLast == 0) {
             endP = items.length - 1;
-        } else endP = nextLast - 1;
+        } else {
+            endP = nextLast - 1;
+        }
         return endP;
     }
 
@@ -36,7 +40,7 @@ public class ArrayDeque<T> {
 //        int startP = getStartPos();
 //        int endP = getEndPos();
         T[] a = (T[]) new Object[newSize];
-//        if(startP > endP) {
+//        if (startP > endP) {
 //            for (int i = 0; i < size; i++) {
 //                if ((i + startP) < items.length) {
 //                    a[i] = items[i + startP];
@@ -57,13 +61,13 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
-        if(isFull()) {
+        if (isFull()) {
             resize(size * 2);
             items[nextFirst] = item;
             nextFirst -= 1;
         } else {
             items[nextFirst] = item;
-            if(nextFirst == 0) {
+            if (nextFirst == 0) {
                 nextFirst = items.length - 1;
             } else {
                 nextFirst -= 1;
@@ -73,13 +77,13 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if(isFull()) {
+        if (isFull()) {
             resize(size * 2);
             items[nextLast] = item;
             nextLast += 1;
         } else {
             items[nextLast] = item;
-            if(nextLast == items.length - 1) {
+            if (nextLast == items.length - 1) {
                 nextLast = 0;
             } else {
                 nextLast += 1;
@@ -100,9 +104,9 @@ public class ArrayDeque<T> {
         if (size == 0) return;
 //        int startP = getStartPos();
 //        int endP = getEndPos();
-//        if(startP > endP) {
+//        if (startP > endP) {
 //            for (int i = 0; i < size; i++) {
-//                if((i + startP) < items.length) {
+//                if ((i + startP) < items.length) {
 //                    System.out.print(items[i + startP]);
 //                } else {
 //                    System.out.print(items[i + startP - items.length]);
@@ -126,15 +130,15 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         } else {
             T firstItem = items[getStartPos()];
             /** Whether to resize the array down or not.*/
-//            if(isTooLarge()) {
+//            if (isTooLarge()) {
 //                resize(items.length / 2);
 //                items[getStartPos()] = null;
-//                if(nextFirst == items.length - 1) {
+//                if (nextFirst == items.length - 1) {
 //                    nextFirst = 0;
 //                } else {
 //                    nextFirst += 1;
@@ -151,13 +155,13 @@ public class ArrayDeque<T> {
 //                resize(items.length / 2);
 //            }
             items[getStartPos()] = null;
-            if(nextFirst == items.length - 1) {
+            if (nextFirst == items.length - 1) {
                 nextFirst = 0;
             } else {
                 nextFirst += 1;
             }
             size -= 1;
-            if(items.length >= 16 && size < items.length / 4) {
+            if (items.length >= 16 && size < items.length / 4) {
                 resize(items.length / 2);
             }
             return firstItem;
@@ -165,18 +169,18 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         } else {
             T lastItem = items[getEndPos()];
             items[getEndPos()] = null;
-            if(nextLast == 0) {
+            if (nextLast == 0) {
                 nextLast = items.length - 1;
             } else {
                 nextLast -= 1;
             }
             size -= 1;
-            if(items.length >= 16 && size < items.length / 4) {
+            if (items.length >= 16 && size < items.length / 4) {
                 resize(items.length / 2);
             }
             return lastItem;
@@ -184,11 +188,11 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if(index < 0 || index >= size) return null;
+        if (index < 0 || index >= size) return null;
 //        int startP = getStartPos();
 //        int endP = getEndPos();
-//        if(startP > endP) {
-//            if((index + startP) > items.length - 1) {
+//        if (startP > endP) {
+//            if ((index + startP) > items.length - 1) {
 //                return items[index + startP - items.length];
 //            } else {
 //                return items[index + startP];

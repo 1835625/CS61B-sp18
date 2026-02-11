@@ -56,7 +56,7 @@ public class LinkedListDeque<T> {
 //            p = p.next;
 //        }
 //        System.out.print(p.item);
-        for(Node p = sentinel.next; p != sentinel; p = p.next) {
+        for (Node p = sentinel.next; p != sentinel; p = p.next) {
             System.out.print(p.item);
             if (p.next != sentinel) {
                 System.out.print(" ");
@@ -65,7 +65,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
         T temp = sentinel.next.item;
@@ -76,7 +76,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
         T temp = sentinel.prev.item;
@@ -87,7 +87,7 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if(index < 0 || size <= index) {
+        if (index < 0 || size <= index) {
             return null;
         }
         int currentIndex = 0;
@@ -100,7 +100,7 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        if(index < 0 || size <= index) {
+        if (index < 0 || size <= index) {
             return null;
         }
         Node p = sentinel.next;
@@ -109,7 +109,7 @@ public class LinkedListDeque<T> {
 
     /* get the index th item of a Deque starting at Node start.*/
     private T getRecursive(int index, Node start) {
-        if(index == 0) {
+        if (index == 0) {
             return start.item;
         }
         return getRecursive(index - 1, start.next);
