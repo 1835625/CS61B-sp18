@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import lab9.BSTMap;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Tests by Brendan Hu, Spring 2015, revised for 2018 by Josh Hug
  */
@@ -84,6 +87,69 @@ public class TestBSTMap {
         b.put("hi", 1);
         assertTrue(b.containsKey("hi"));
         assertTrue(b.get("hi") != null);
+    }
+
+    @Test
+    public void keySetTest() {
+        BSTMap<Character, Integer> b = new BSTMap<>();
+        b.put('f', 1);
+        b.put('b', 2);
+        b.put('j', 3);
+        b.put('a', 3);
+        b.put('h', 3);
+        b.put('k', 3);
+        b.put('i', 3);
+        Set<Character> expect = new HashSet<>();
+        expect.add('f');
+        expect.add('b');
+        expect.add('j');
+        expect.add('a');
+        expect.add('h');
+        expect.add('k');
+        expect.add('i');
+        assertEquals(expect, b.keySet());
+    }
+
+    //assumes two versions of remove all work.
+    @Test
+    public void removeTest() {
+        BSTMap<Character, Integer> b = new BSTMap<>();
+        b.put('f', 1);
+        b.put('b', 2);
+        b.put('j', 3);
+        b.put('a', 4);
+        b.put('h', 5);
+        b.put('k', 6);
+        b.put('i', 7);
+        int val = b.remove('f'); // Removes the root of the tree.
+        assertEquals(1, val);
+        int val2 = b.remove('h', 5);
+        assertEquals(5, val2);
+        b.remove('a', 6);
+        Set<Character> expect = new HashSet<>();
+//        expect.add('f');
+        expect.add('b');
+        expect.add('j');
+        expect.add('a');
+//        expect.add('h');
+        expect.add('k');
+        expect.add('i');
+        assertEquals(expect, b.keySet());
+    }
+
+    @Test
+    public void iteratorTest() {
+        BSTMap<Character, Integer> b = new BSTMap<>();
+        b.put('f', 1);
+        b.put('b', 2);
+        b.put('j', 3);
+        b.put('a', 4);
+        b.put('h', 5);
+        b.put('k', 6);
+        b.put('i', 7);
+        for (Character key : b) {
+            System.out.println(key);
+        }
     }
 
     public static void main(String[] args) {
