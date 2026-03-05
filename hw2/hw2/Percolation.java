@@ -1,7 +1,6 @@
 package hw2;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-import java.util.HashSet;
 
 public class Percolation {
 
@@ -37,7 +36,8 @@ public class Percolation {
         if (row == 0) { // If the site is at the first row, connect it to the virtual top site first.
             ufPerc.union(virtualTop, index);
             ufFull.union(virtualTop, index);
-        } else if (row == n - 1) { // If the site is at the bottom and has connected to the top, connect it to the virtual bottom.
+        }
+        if (row == n - 1) {
             ufPerc.union(virtualBottom, index);
         }
 
